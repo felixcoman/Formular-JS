@@ -25,6 +25,18 @@ const messageInputError = document.querySelector("#messageInputError");
 
 const submitMessage = document.querySelector("#submitMessage");
 
+const backHome = document.querySelector("#backHome");
+
+backHome.style.visibility = "hidden";
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 200) {
+    backHome.style.visibility = "";
+  } else {
+    backHome.style.visibility = "hidden";
+  }
+});
+
 const formResult = {
   surname: "",
   name: "",
@@ -194,6 +206,14 @@ messageInput.addEventListener("change", (event) => {
     formResult.mess = event.target.value;
   }
 });
+
+//BUTON BACK HOME
+
+let funcBackHome = () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+};
+
+backHome.addEventListener("mousedown", funcBackHome);
 
 //ACTIUNE SUBMIT
 

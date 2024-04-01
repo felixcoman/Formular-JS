@@ -35,3 +35,12 @@
   height: 5px;
   align-content: center;
 }
+
+#backHome {
+  color: blue;
+  text-decoration: underline;
+}
+
+#backHome:hover {
+  cursor: pointer;
+}
