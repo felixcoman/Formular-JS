@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ro">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style-formular.css" />
+    <title>Formular reclamație</title>
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>Formular reclamație</h1>
+      </header>
+      <section>
+        <form class="formular">
+          <br />
+          <label for="surNameInput">Nume</label>
+          <input
+            type="text"
+            id="surNameInput"
+            name="numeFam"
+            placeholder="Numele dumneavoastră de familie complet"
+          />
+          <div id="surNameError"></div>
+          <br />
+          <label for="nameInput">Prenume</label>
+          <input
+            type="text"
+            id="nameInput"
+            name="numeMic"
+            placeholder="Prenumele dumneavoastră complet"
+          />
+          <div id="nameError"></div>
+          <br />
+          <label for="mailInput">E-mail</label>
+          <input
+            type="email"
+            id="mailInput"
+            name="email"
+            placeholder="e-mail"
+          />
+          <input
+            type="email"
+            id="confirmMailInput"
+            name="email"
+            placeholder="Confirmare e-mail"
+          />
+          <div id="mailError"></div>
+          <br />
+          <label for="passInput">Parolă</label>
+          <input
+            type="password"
+            id="passInput"
+            name="parola"
+            placeholder="parola"
+          />
+          <input
+            type="password"
+            id="confirmPassInput"
+            name="parola"
+            placeholder="Confirmare parolă"
+          />
+          <div id="passError"></div>
+
+          <br />
+          <label for="phoneInput">Introduceți numărul de telefon</label>
+          <!-- type tel este nume rezervat -->
+          <input
+            type="tel"
+            id="phoneInput"
+            name="telefon"
+            placeholder="0040747777777"
+          />
+          <div id="phoneError"></div>
+          <small><i>Format număr de telefon 0040747777777</i></small>
+          <br />
+          <label for="ageInput">Vârsta</label>
+          <input type="number" id="ageInput" name="varsta" />
+          <div id="ageInputError"></div>
+          <br />
+          <span>
+            <label for="gdprCheck"
+              >Sunt de acord cu
+              <a href="https://www.dataprotectionromania.ro/" target="_blank"
+                >termenii și condițiile</a
+              ></label
+            >
+            <input type="checkbox" id="gdprCheck" name="gdpr" />
+          </span>
+          <div id="gdprError"></div>
+          <br />
+          <label for="messageInput">Reclamația dumneavoastră</label>
+          <textarea type="textarea" id="messageInput" name="mesaj"></textarea>
+          <div id="messageInputError"></div>
+          <br />
+          <input type="submit" id="submitAction" value="Validează" />
+          <div id="submitMessage"></div>
+          <br />
+        </form>
+      </section>
+    </main>
+  </body>
+  <script src="formular.js"></script>
+</html>
