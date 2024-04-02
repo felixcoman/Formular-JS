@@ -30,7 +30,7 @@ const backHome = document.querySelector("#backHome");
 backHome.style.visibility = "hidden";
 
 window.addEventListener("scroll", () => {
-  if (window.scrollY > 200) {
+  if (window.scrollY > 300) {
     backHome.style.visibility = "";
   } else {
     backHome.style.visibility = "hidden";
@@ -181,27 +181,26 @@ ageInput.addEventListener("change", (event) => {
 
 //VERIFICARE GDPR
 
-let check = false;
+//console.log(gdprCheck.checked); //gdprCheck.checked foloseste direct valoarea booleana din checkbox fara a mai declara un boolean separat. !!verifica inainte de interactiunea cu checkboxul ca este false!!
 
 gdprCheck.addEventListener("change", (event) => {
   if (!event.target.checked) {
-    check = false;
     gdprError.innerHTML = `<p class="error"> PENTRU A CONTINUA TREBUIE SĂ ACCEPTAȚI TERMENII ȘI CONDIȚIILE! </p>`;
   } else {
-    check = true;
     gdprError.innerHTML = "";
-    formResult.checked = event.target.checked;
   }
+  formResult.checked = event.target.checked;
+  console.log(event.target.checked);
 });
 
-let message = false;
+//VERIFICARE RECLAMATIE
+
+//console.log(`^^^${messageInput.value}^^^${typeof messageInput.value}^^^`); //messageInput.value returneaza "" daca reclamatia este goala - se poate folosi ca un boolean !!verifica inainte de interactiunea cu textarea ca este false!!
 
 messageInput.addEventListener("change", (event) => {
   if (!event.target.value) {
-    message = false;
     messageInputError.innerHTML = `<p class="error"> NU SE POATE VALIDA O RECLAMAȚIE GOALĂ! </p>`;
   } else {
-    message = true;
     messageInputError.innerHTML = "";
     formResult.mess = event.target.value;
   }
@@ -228,13 +227,15 @@ let formCompl = (object) => {
 };
 
 submitAction.addEventListener("click", (event) => {
-  //preventDefault previna sa dea refresh la pagină când este submis fromularul pentru a putea afisa rezultatele in consola
+  //preventDefault previne sa dea refresh la pagină când este submis fromularul pentru a putea afisa rezultatele in consola
   event.preventDefault();
   let completat = formCompl(formResult);
-  if (check && message && completat) {
+  if (gdprCheck.checked && messageInput.value && completat) {
+    messageInputError.innerHTML = "";
+    gdprError.innerHTML = "";
     submitMessage.innerHTML = `<p class="message"> RECLAMAȚIA A FOST ÎNREGISTRATĂ CU SUCCES! O SĂ REVENIM CU UN RĂSPUNS ÎN CEL MULT 30 DE ZILE CALENDARISTICE! </p>`;
     console.log(formResult);
-  } else if (check && completat) {
+  } else if (gdprCheck.checked && completat) {
     messageInputError.innerHTML = `<p class="error"> RECLAMAȚIA E GOALĂ! </p>`;
   } else if (completat) {
     gdprError.innerHTML = `<p class="error"> PENTRU A CONTINUA TREBUIE SĂ ACCEPTAȚI TERMENII ȘI CONDIȚIILE! </p>`;

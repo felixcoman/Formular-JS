@@ -37,8 +37,11 @@
 }
 
 #backHome {
+  width: 100%;
+  display: flex;
   color: blue;
   text-decoration: underline;
+  justify-content: flex-end;
 }
 
 #backHome:hover {
